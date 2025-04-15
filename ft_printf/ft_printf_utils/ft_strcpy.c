@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/15 23:26:03 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/02/13 16:33:13 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/02/13 16:33:23 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf_utils.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
+char	*ft_strcpy(char *dst, const char *src)
+{
+	int		i;
 
-#endif //MINITALK_H
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

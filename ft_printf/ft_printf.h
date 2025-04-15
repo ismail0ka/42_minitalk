@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/15 23:26:03 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/11/22 16:05:12 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/12/06 04:42:39 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "ft_printf_utils/ft_printf_utils.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
-
-#endif //MINITALK_H
+int	ft_printf(const char *s, ...);
+#endif

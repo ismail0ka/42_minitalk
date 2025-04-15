@@ -1,14 +1,14 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
-ARCHIVES=libprint.a
+CFLAGS=-Wall -Wextra -Werror -Iheaders
+ARCHIVES=ft_printf/libftprintf.a
 
 all: client server
 
 client: client.c $(ARCHIVES)
-	$(CC) $(CFLAGS) -o client client.c
+	$(CC) $(CFLAGS) client.c $(ARCHIVES) -o client
 
 server: server.c $(ARCHIVES)
-	$(CC) $(CFLAGS) -o server server.c
+	$(CC) $(CFLAGS) server.c $(ARCHIVES) -o server
 
 $(ARCHIVES):
 	$(MAKE) -C ft_printf

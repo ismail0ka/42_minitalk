@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/15 23:26:03 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/01/16 18:46:53 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/01/16 18:47:04 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf_utils.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
 
-#endif //MINITALK_H
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}

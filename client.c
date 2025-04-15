@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/15 04:09:17 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/15 23:33:17 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, const char **av)
 			else
 				kill(pid, SIGUSR2);
 			bit++;
-			usleep(100);
+			usleep(600);
 		}
 		i++;
 	}
