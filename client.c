@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/16 05:44:22 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:14:23 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ void	send_data(int pid, unsigned char c)
 	while (bit)
 	{
 		if ((c >> --bit) & 1)
-			kill(pid, SIGUSR1);
+			kill(pid, SIGUSR1);//1
 		else
-			kill(pid, SIGUSR2);
-		usleep(400);
+			kill(pid, SIGUSR2);//0
+		usleep(100);
 	}
+}
+
+void	ack(int sig)
+{
+	(void)sig;
+	ft_printf("Server received the message");
 }
 
 int	main(int ac, const char **av)
@@ -46,7 +52,9 @@ int	main(int ac, const char **av)
 	}
 	message = (char *)av[2];
 	i = -1;
+	signal(SIGUSR2, ack);
 	while (message[++i])
 		send_data(pid, (unsigned char)message[i]);
+	send_data(pid, 0);
 	return (0);
 }

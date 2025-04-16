@@ -18,7 +18,6 @@ $(ARCHIVES):
 clean:
 	$(MAKE) -C ft_printf clean
 	$(MAKE) -C libft clean
-	rm -f client server
 	rm -f $(ARCHIVES)
 
 fclean: clean
