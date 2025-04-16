@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/16 03:30:08 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/24 13:46:58 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/03 14:44:46 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t	i;
 
-#endif //MINITALK_H
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		if (*((unsigned char *)(s + i)) == (unsigned char)c)
+			return ((void *)(s + i));
+		i++;
+	}
+	return (NULL);
+}

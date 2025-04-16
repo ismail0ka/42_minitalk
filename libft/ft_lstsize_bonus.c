@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/16 03:30:08 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/29 20:38:54 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/03 14:42:34 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
+int	ft_lstsize(t_list *lst)
+{
+	int	count;
 
-#endif //MINITALK_H
+	if (!lst)
+		return (0);
+	count = 0;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count + 1);
+}

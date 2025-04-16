@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 03:56:30 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/16 03:30:08 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/22 21:13:35 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/10 16:16:16 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <stdlib.h>
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-
-#endif //MINITALK_H
+int	ft_tolower(int c)
+{
+	if (c >= 0101 && c <= 0132)
+		c += 32;
+	return (c);
+}
