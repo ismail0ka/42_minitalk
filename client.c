@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 17:00:02 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:13:02 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int		ack = 0;
+
 void	sig_ack(int sig)
 {
-	(void)sig;
-	ft_printf("Server received a bit\n");
+	if (sig == SIGUSR1)
+		ack = 1;
 }
 
 void	send_bit(int pid, int bit)
@@ -24,7 +26,6 @@ void	send_bit(int pid, int bit)
 		kill(pid, SIGUSR1);//1
 	else
 		kill(pid, SIGUSR2);//0
-	pause();
 }
 
 void	send_data(int pid, unsigned char c)
@@ -33,7 +34,12 @@ void	send_data(int pid, unsigned char c)
 
 	bit = 8;
 	while (bit)
+	{
 		send_bit(pid, (c >> --bit) & 1);
+		while (ack == 0)
+			usleep(100);
+		ack = 0;
+	}
 }
 
 void	msg_ack(int sig)
@@ -62,7 +68,6 @@ int	main(int ac, const char **av)
 	message = (char *)av[2];
 	i = -1;
 	signal(SIGUSR1, sig_ack);
-	signal(SIGUSR2, msg_ack);
 	while (message[++i])
 		send_data(pid, (unsigned char)message[i]);
 	send_data(pid, 0);
