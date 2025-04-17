@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 16:55:33 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:00:02 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	send_bit(int pid, int bit)
 		kill(pid, SIGUSR1);//1
 	else
 		kill(pid, SIGUSR2);//0
+	pause();
 }
 
 void	send_data(int pid, unsigned char c)
@@ -32,10 +33,7 @@ void	send_data(int pid, unsigned char c)
 
 	bit = 8;
 	while (bit)
-	{
 		send_bit(pid, (c >> --bit) & 1);
-		pause();
-	}
 }
 
 void	msg_ack(int sig)
