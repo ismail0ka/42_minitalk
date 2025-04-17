@@ -6,16 +6,15 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 03:41:50 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 00:15:43 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:54:48 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static unsigned char	curr_c;
-
 void	get_message(int sig, siginfo_t *info, void *context)
 {
+	static unsigned char	curr_c;
 	static int				bit;
 
 	(void)context;
@@ -24,12 +23,13 @@ void	get_message(int sig, siginfo_t *info, void *context)
 	if (bit == 8)
 	{
 		if (curr_c == 0)
-			kill(info->si_pid, SIGUSR2);
+		kill(info->si_pid, SIGUSR2);
 		else
-			write(1, &curr_c, 1);
+		write(1, &curr_c, 1);
 		bit = 0;
 		curr_c = 0;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
