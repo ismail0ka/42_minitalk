@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 22:04:14 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 22:33:54 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int	main(int ac, const char **av)
 	while (message[++i])
 		send_data(pid, (unsigned char)message[i]);
 	send_data(pid, 0);
+	ft_printf("Server recived the full message!");
 	return (0);
 }

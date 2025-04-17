@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 03:41:50 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 22:19:32 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 22:31:06 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,18 @@ void	get_message(int sig, siginfo_t *info, void *context)
 {
 	static unsigned char	curr_c;
 	static int				bit;
+	static int				reg_pid;
 
 	(void)context;
+	if (reg_pid != info->si_pid)
+	{
+		if (reg_pid != 0)
+		{
+			curr_c = 0;
+			bit = 0;
+		}
+		reg_pid = info->si_pid;
+	}
 	curr_c = (curr_c << 1) | (sig == SIGUSR1);
 	bit++;
 	if (bit == 8)
