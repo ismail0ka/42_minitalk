@@ -6,26 +6,26 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:57:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 18:29:26 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 22:04:14 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int		ack = 0;
+int		g_ack = 0;
 
 void	sig_ack(int sig)
 {
 	if (sig == SIGUSR1)
-		ack = 1;
+		g_ack = 1;
 }
 
 void	send_bit(int pid, int bit)
-{ 
+{
 	if (bit)
-		kill(pid, SIGUSR1);//1
+		kill(pid, SIGUSR1);
 	else
-		kill(pid, SIGUSR2);//0
+		kill(pid, SIGUSR2);
 }
 
 void	send_data(int pid, unsigned char c)
@@ -36,9 +36,9 @@ void	send_data(int pid, unsigned char c)
 	while (bit)
 	{
 		send_bit(pid, (c >> --bit) & 1);
-		while (ack == 0)
+		while (g_ack == 0)
 			usleep(100);
-		ack = 0;
+		g_ack = 0;
 	}
 }
 
