@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 03:41:50 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/04/17 17:06:26 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:45:39 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ void	get_message(int sig, siginfo_t *info, void *context)
 	bit++;
 	if (bit == 8)
 	{
-		if (curr_c == 0)
-			kill(info->si_pid, SIGUSR2);
-		else
-			write(1, &curr_c, 1);
+		write(1, &curr_c, 1);
 		bit = 0;
 		curr_c = 0;
 	}
